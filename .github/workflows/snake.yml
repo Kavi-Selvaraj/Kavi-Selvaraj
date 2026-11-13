@@ -1,0 +1,68 @@
+name: Generate Snake Animation
+
+on:
+  schedule:
+    cron: "0 */12 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Generate snake SVGs
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg?palette=github-light&color_snake=0891B2&color_dots=#ebedf0,#a5b4fc,#818cf8,#6366f1,#089182
+            dist/github-snake-dark.svg?palette=github-dark&color_snake=10B981&color_dots=#2d3343,#4b5563,#7C3AED,#A78BFA,#22D3EE
+
+      - name: Push to output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+          commit_message: "Update snake animation [skip ci]"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```[cite: 3]
+
+7. Click **Commit changes...** twice to save it to `main`[cite: 3].
+8. Click the **Actions** tab at the top of your repo[cite: 3]. You should see **Generate Snake Animation** running (yellow dot) and turn into a green checkmark within about a minute[cite: 3].
+
+---
+
+### Step 3: Put the Snake & Social Badges in Your README
+Once that Action has a green checkmark[cite: 4]:
+1. Go back to the **Code** tab of `Kavi-Selvaraj` and click the **pencil icon** on `README.md` to edit it.
+2. Delete the default text and paste this code (already customized with your username and email[cite: 8]):
+
+```html
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Kavi-Selvaraj/Kavi-Selvaraj/output/github-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Kavi-Selvaraj/Kavi-Selvaraj/output/github-snake.svg" />
+    <img alt="Snake eating my contributions" src="https://raw.githubusercontent.com/Kavi-Selvaraj/Kavi-Selvaraj/output/github-snake.svg" />
+  </picture>
+</div>
+
+<br/>
+
+<div align="center">
+  <a href="mailto:mk.kavitha2006@gmail.com">
+    <img src="https://img.shields.io/badge/Email-0A101F?style=for-the-badge&logo=gmail&logoColor=10B981&labelColor=0A101F" alt="Email" />
+  </a>
+</div>
+```[cite: 4, 8]
+
+3. Click **Commit changes...** to save. Visit `[github.com/Kavi-Selvaraj](https://github.com/Kavi-Selvaraj)` to see your live contribution snake!
+
+---
+
+### What's Next?
+To add the **top terminal banner** (`dark.svg` and `light.svg` from your screenshot)[cite: 1, 6], do you already have the SVG files from the "Master Prompt" mentioned in your PDF[cite: 1], or would you like me to generate custom dark and light terminal SVG banners tailored with your details (Kavitha, Karnataka, Python/Cybersecurity stack)[cite: 8]?
