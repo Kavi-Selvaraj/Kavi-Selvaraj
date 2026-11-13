@@ -30,9 +30,4 @@ jobs:
           commit_message: "Update snake animation [skip ci]"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```[cite: 3]
 
-4. Click **Commit changes...** at the top right to save it.
-5. Go back to the **Actions** tab at the top—it will automatically trigger a new run, and this time it should turn **green**[cite: 3]! 
-
-Let me know once it turns green so we can add it to your profile README!
